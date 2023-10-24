@@ -70,8 +70,14 @@ class ProfileApp extends StatelessWidget {
             ),
             // here we need to add
             SectionSeparator(),
-            ProfileRow(title: 'Born', subtext: 'DOB'),
-            ContactInfoRow(title1: 'Email', title2: 'Phone'),
+            InfoRow(
+              heading1: 'Email',
+              subtext1: 'anmolbaranwal119@gmail.com',
+              heading2: 'Born',
+              subtext2: '9th November 2001',
+              heading3: 'Phone',
+              subtext3: '+91 8931073435',
+            ),
             AboutMeContainer(
               title: 'About Me',
               content:
@@ -139,6 +145,7 @@ class ColumnWithDivider extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
+              color: Colors.indigo.shade400,
             ),
           ),
           Container(
@@ -199,52 +206,92 @@ class SectionSeparator extends StatelessWidget {
   }
 }
 
-class ProfileRow extends StatelessWidget {
-  final String title;
+class InfoRowItem extends StatelessWidget {
+  final String heading;
   final String subtext;
 
-  ProfileRow({required this.title, required this.subtext});
+  InfoRowItem({
+    required this.heading,
+    required this.subtext,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Text(
-            title,
+    return Container(
+      margin: EdgeInsets.only(top: 8, bottom: 4), // Adjust the margin as needed
+      child: Column(
+        children: [
+          Text(
+            heading,
             style: TextStyle(
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w800,
+              color: Colors.indigo.shade400,
             ),
           ),
-        ),
-        Expanded(
-          child: Text(
+          SizedBox(height: 4),
+          Text(
             subtext,
+            style: TextStyle(
+              fontWeight: FontWeight.w800,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
 
-class ContactInfoRow extends StatelessWidget {
-  final String title1;
-  final String title2;
+class InfoRow extends StatelessWidget {
+  final String heading1;
+  final String subtext1;
+  final String heading2;
+  final String subtext2;
+  final String heading3;
+  final String subtext3;
 
-  ContactInfoRow({required this.title1, required this.title2});
+  InfoRow({
+    required this.heading1,
+    required this.subtext1,
+    required this.heading2,
+    required this.subtext2,
+    required this.heading3,
+    required this.subtext3,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-              child: ProfileRow(title: title1, subtext: 'example@email.com')),
-          Expanded(child: ProfileRow(title: title2, subtext: '+123 456 7890')),
-        ],
-      ),
+    // Define the InfoRowItems for both columns
+    InfoRowItem infoRowItem1 =
+        InfoRowItem(heading: heading1, subtext: subtext1);
+    InfoRowItem infoRowItem2 =
+        InfoRowItem(heading: heading2, subtext: subtext2);
+    InfoRowItem infoRowItem3 =
+        InfoRowItem(heading: heading3, subtext: subtext3);
+
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [infoRowItem1],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Column(
+              children: [
+                SizedBox(height: 4),
+                infoRowItem2, // Reuse the InfoRowItem widget
+              ],
+            ),
+            Column(
+              children: [
+                SizedBox(height: 8),
+                infoRowItem3, // Reuse the InfoRowItem widget
+              ],
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
@@ -259,7 +306,7 @@ class AboutMeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 16, bottom: 16, left: 16),
+      margin: EdgeInsets.only(top: 40, bottom: 16, left: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
