@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(ProfileApp());
@@ -67,12 +70,12 @@ class ProfileApp extends StatelessWidget {
             ),
             // here we need to add
             SectionSeparator(),
-            // ProfileRow(title: 'Born', subtext: 'DOB'),
-            // ContactInfoRow(title1: 'Email', title2: 'Phone'),
+            ProfileRow(title: 'Born', subtext: 'DOB'),
+            ContactInfoRow(title1: 'Email', title2: 'Phone'),
             AboutMeContainer(
               title: 'About Me',
               content:
-                  'Loving open source, I\'m a passionate full-stack developer in the top 8% on GitHub, actively contributing to communities and maintaining @LinksHub. With a rank of 11 in @GSSoC\'23, I also serve as a core team member and mentor. My technical writing has garnered over 40k+ views, and I recently completed Buildspace N&W S4, building something awesome.',
+                  'Loving open source, I\'m a passionate full-stack developer in the top 8% on GitHub, actively contributing to communities and maintaining @LinksHub. With a rank of 11 in @GSSoC\'23, I also served as a core team member and mentor. My technical writing has garnered over 40k+ views, and I recently completed Buildspace N&W S4, building designlyfe.tech.',
             ),
             SocialMediaRow(),
           ],
@@ -296,10 +299,26 @@ class SocialMediaRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        SocialIcon(icon: Icons.link, link: 'linkedin.com'),
-        SocialIcon(icon: Icons.link, link: 'twitter.com'),
-        SocialIcon(icon: Icons.link, link: 'github.com'),
-        SocialIcon(icon: Icons.link, link: 'example.com'),
+        SocialIcon(
+          icon: FontAwesomeIcons.github,
+          link: Uri.parse('https://www.linkedin.com/in/Anmol-Baranwal/'),
+          subtext: 'LinkedIn',
+        ),
+        SocialIcon(
+          icon: FontAwesomeIcons.linkedin,
+          link: Uri.parse('https://github.com/Anmol-Baranwal'),
+          subtext: 'GitHub',
+        ),
+        SocialIcon(
+          icon: FontAwesomeIcons.twitter,
+          link: Uri.parse('https://twitter.com/Anmol_Codes'),
+          subtext: 'Twitter',
+        ),
+        SocialIcon(
+          icon: FontAwesomeIcons.dev,
+          link: Uri.parse('https://dev.to/anmolbaranwal'),
+          subtext: 'Dev',
+        )
       ],
     );
   }
@@ -307,21 +326,33 @@ class SocialMediaRow extends StatelessWidget {
 
 class SocialIcon extends StatelessWidget {
   final IconData icon;
-  final String link;
+  final Uri link;
+  final String subtext;
 
-  SocialIcon({required this.icon, required this.link});
+  SocialIcon({required this.icon, required this.link, required this.subtext});
+
+  _launchURL() async {
+    if (await canLaunchUrl(link)) {
+      await launchUrl(link);
+    } else {
+      throw 'Could not launch $link';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Icon(
-          icon,
-          size: 36,
-          color: Colors.blue,
-        ),
-        Text(link),
-      ],
+    return GestureDetector(
+      onTap: _launchURL, // Call _launchURL when tapped
+      child: Column(
+        children: [
+          FaIcon(
+            icon, // Use FontAwesome icon here
+            size: 24,
+            color: Colors.blue,
+          ),
+          Text(subtext),
+        ],
+      ),
     );
   }
 }
