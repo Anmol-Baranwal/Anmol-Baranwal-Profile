@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
-import '../../widgets/profile_widgets.dart'; // Import the widgets
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../widgets/profile_widgets.dart';
+import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  int _currentTab = 0;
+
+  void _selectTab(int tab) {
+    setState(() {
+      _currentTab = tab;
+    });
+  }
+
+  List<Widget> _tabs = [
+    ProfileContent(),
+    EducationContent(),
+    ProjectsContent(),
+    InternshipsContent(),
+    HobbiesContent(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          body: SingleChildScrollView(
+    return Scaffold(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
@@ -78,9 +100,81 @@ class ProfileScreen extends StatelessWidget {
                   'Loving open source, I\'m a passionate full-stack developer in the top 8% on GitHub, actively contributing to communities and maintaining @LinksHub. With a rank of 11 in @GSSoC\'23, I also served as a core team member and mentor. My technical writing has garnered over 40k+ views, and I recently completed Buildspace N&W S4, building designlyfe.tech.',
             ),
             SocialMediaRow(),
+            _tabs[_currentTab],
           ],
         ),
-      )),
+      ),
+      bottomNavigationBar: DotNavigationBar(
+        currentIndex: _currentTab,
+        onTap: _selectTab,
+        items: [
+          DotNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.userAstronaut),
+            selectedColor: Colors.teal,
+          ),
+          DotNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.graduationCap),
+            selectedColor: Colors.purple,
+          ),
+          DotNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.code),
+            selectedColor: Colors.pink,
+          ),
+          DotNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.briefcase),
+            selectedColor: Colors.orange,
+          ),
+          DotNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.futbol),
+            selectedColor: Colors.teal,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProfileContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Profile Content'),
+    );
+  }
+}
+
+class EducationContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Education Content'),
+    );
+  }
+}
+
+class ProjectsContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Projects Content'),
+    );
+  }
+}
+
+class InternshipsContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Internships Content'),
+    );
+  }
+}
+
+class HobbiesContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Hobbies Content'),
     );
   }
 }
