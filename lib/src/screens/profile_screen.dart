@@ -569,8 +569,7 @@ class InternshipsContent extends StatelessWidget {
           role: 'Frontend Developer',
           points: [
             'I\'m also working with senior developers from France, Indonesia, and the Philippines. ',
-            'It\'s worth noting that I\'m the sole member from India in this diverse team. (7 Member Team)',
-            'We are working on connecting sponsors and tech community events.',
+            'It\'s worth noting that I\'m the sole member from India in this diverse team. (7 Member Team). We are working on connecting sponsors and tech community events.',
           ],
           place: 'Remote',
           date: 'Ongoing',
