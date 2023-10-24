@@ -34,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(
               height: 150,
               child: Image.asset(
-                'assets/banner.jpg', // Replace with the path to your banner image
+                'assets/banner.png', // Replace with the path to your banner image
                 fit: BoxFit.cover,
                 width: double.infinity, // Takes up the whole width
               ),
@@ -356,6 +356,16 @@ class InternshipsContent extends StatelessWidget {
             ),
           ),
         ),
+        InternshipContent(
+          title: 'Company Name 2',
+          role: 'Intern',
+          points: [
+            'Achievement 1',
+            'Achievement 2',
+          ],
+          place: 'Location 2',
+          date: 'Date 2',
+        ),
       ],
     );
   }
@@ -416,29 +426,6 @@ class HobbiesContent extends StatelessWidget {
           ),
         )
       ],
-    );
-  }
-}
-
-class UnorderedList extends StatelessWidget {
-  final List<dynamic> items;
-
-  UnorderedList({required this.items});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: items.map((item) {
-        return ListTile(
-          leading: Icon(
-            FontAwesomeIcons.circleDot,
-            size: 6,
-            color: Colors.indigo.shade600,
-          ),
-          title: item is String ? Text(item) : UnorderedList(items: item),
-        );
-      }).toList(),
     );
   }
 }

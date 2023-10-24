@@ -494,3 +494,134 @@ class ProjectDetails extends StatelessWidget {
     );
   }
 }
+
+class InternshipContent extends StatelessWidget {
+  final String title;
+  final String role;
+  final List<String> points;
+  final String place;
+  final String date;
+  final IconData? icon; // Make icon and text optional
+  final String? extraText;
+
+  InternshipContent({
+    required this.title,
+    required this.role,
+    required this.points,
+    required this.place,
+    required this.date,
+    this.icon, // Initialize icon and text as optional
+    this.extraText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    role,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  // UnorderedList(items: points),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  SizedBox(height: 2),
+                  Text(
+                    place,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.indigo.shade600,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    date,
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  if (icon != null && extraText != null)
+                    Row(
+                      children: [
+                        SocialIcon(
+                          icon: icon!,
+                          link: Uri.parse(
+                              'https://example.com/'), // Replace with your link
+                          size: 16,
+                        ),
+                        Text(
+                          extraText!,
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                ],
+              ),
+            ],
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 20,
+              bottom: 20,
+            ),
+            child: Container(
+              height: 2,
+              margin: EdgeInsets.only(left: 200, right: 200),
+              color: Colors.black26,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class UnorderedList extends StatelessWidget {
+  final List<dynamic> items;
+
+  UnorderedList({required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: items.map((item) {
+        return ListTile(
+          leading: Icon(
+            FontAwesomeIcons.circleDot,
+            size: 6,
+            color: Colors.indigo.shade600,
+          ),
+          title: item is String ? Text(item) : UnorderedList(items: item),
+        );
+      }).toList(),
+    );
+  }
+}
