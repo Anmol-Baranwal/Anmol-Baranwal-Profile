@@ -259,7 +259,7 @@ class AboutMeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 16, bottom: 36, left: 16),
+      margin: EdgeInsets.only(top: 16, bottom: 16, left: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -296,30 +296,34 @@ class AboutMeContainer extends StatelessWidget {
 class SocialMediaRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        SocialIcon(
-          icon: FontAwesomeIcons.github,
-          link: Uri.parse('https://www.linkedin.com/in/Anmol-Baranwal/'),
-          subtext: 'LinkedIn',
-        ),
-        SocialIcon(
-          icon: FontAwesomeIcons.linkedin,
-          link: Uri.parse('https://github.com/Anmol-Baranwal'),
-          subtext: 'GitHub',
-        ),
-        SocialIcon(
-          icon: FontAwesomeIcons.twitter,
-          link: Uri.parse('https://twitter.com/Anmol_Codes'),
-          subtext: 'Twitter',
-        ),
-        SocialIcon(
-          icon: FontAwesomeIcons.dev,
-          link: Uri.parse('https://dev.to/anmolbaranwal'),
-          subtext: 'Dev',
-        )
-      ],
+    return Container(
+      margin: EdgeInsets.only(
+          top: 0, bottom: 24), // Add margin to the whole container
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          SocialIcon(
+            icon: FontAwesomeIcons.linkedin,
+            link: Uri.parse('https://www.linkedin.com/in/Anmol-Baranwal/'),
+            subtext: 'LinkedIn',
+          ),
+          SocialIcon(
+            icon: FontAwesomeIcons.github,
+            link: Uri.parse('https://github.com/Anmol-Baranwal'),
+            subtext: 'GitHub',
+          ),
+          SocialIcon(
+            icon: FontAwesomeIcons.twitter,
+            link: Uri.parse('https://twitter.com/Anmol_Codes'),
+            subtext: 'Twitter',
+          ),
+          SocialIcon(
+            icon: FontAwesomeIcons.dev,
+            link: Uri.parse('https://dev.to/anmolbaranwal'),
+            subtext: 'Dev',
+          )
+        ],
+      ),
     );
   }
 }
@@ -345,10 +349,11 @@ class SocialIcon extends StatelessWidget {
       onTap: _launchURL, // Call _launchURL when tapped
       child: Column(
         children: [
-          FaIcon(
-            icon, // Use FontAwesome icon here
-            size: 24,
-            color: Colors.blue,
+          IconButton(
+            icon: FaIcon(icon), // Use IconButton with FaIcon
+            onPressed: _launchURL, // Added onPressed to IconButton
+            iconSize: 22, // Icon Size
+            color: Colors.black, // Color Of Icon
           ),
           Text(subtext),
         ],
