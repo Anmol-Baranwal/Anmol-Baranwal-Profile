@@ -319,3 +319,33 @@ class SocialIcon extends StatelessWidget {
     );
   }
 }
+
+class ClickableText extends StatelessWidget {
+  final String text;
+  final Uri link;
+
+  ClickableText({required this.text, required this.link});
+
+  _launchURL() async {
+    if (await canLaunchUrl(link)) {
+      await launchUrl(link);
+    } else {
+      throw 'Could not launch $link';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: _launchURL, // Call _launchURL when tapped
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 16,
+          color: Colors.indigo,
+          decoration: TextDecoration.underline, // Add underline
+        ),
+      ),
+    );
+  }
+}
