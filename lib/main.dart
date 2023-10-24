@@ -9,52 +9,53 @@ class ProfileApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
+          body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 150,
+              child: Image.asset(
                 'assets/banner.jpg', // Replace with the path to your banner image
                 fit: BoxFit.cover,
                 width: double.infinity, // Takes up the whole width
               ),
-              SizedBox(height: 20),
-              ProfilePictureWidget(),
-              SizedBox(height: 20),
-              Text(
-                'Anmol Baranwal',
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                ),
+            ),
+            Transform.translate(
+              offset: Offset(0, -75), // this is as per the banner
+              child: ProfilePictureWidget(),
+            ),
+            Text(
+              'Anmol Baranwal',
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
               ),
-              Text(
-                'Samalkha, Haryana',
-                style: TextStyle(
-                  fontSize: 16,
-                ),
+            ),
+            Text(
+              'Samalkha, Haryana',
+              style: TextStyle(
+                fontSize: 16,
               ),
-              SizedBox(height: 20),
-              ColumnWithDivider(
-                items: [
-                  ColumnWithDividerItem(text: '20+', subtext: 'Projects'),
-                  ColumnWithDividerItem(
-                      text: '150+', subtext: 'Followers (GitHub)'),
-                  ColumnWithDividerItem(
-                      text: '40k+', subtext: 'Views on Blogs'),
-                ],
+            ),
+            SizedBox(height: 20),
+            ColumnWithDivider(
+              items: [
+                ColumnWithDividerItem(text: '20+', subtext: 'Projects'),
+                ColumnWithDividerItem(
+                    text: '150+', subtext: 'Followers (GitHub)'),
+                ColumnWithDividerItem(text: '40k+', subtext: 'Views on Blogs'),
+              ],
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Additional text',
+              style: TextStyle(
+                fontSize: 18,
               ),
-              SizedBox(height: 20),
-              Text(
-                'Additional text',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
+      )),
     );
   }
 }
@@ -62,8 +63,7 @@ class ProfileApp extends StatelessWidget {
 class ProfilePictureWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
+    return Column(
       children: [
         Container(
           height: 150,
