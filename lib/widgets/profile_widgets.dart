@@ -543,7 +543,6 @@ class InternshipContent extends StatelessWidget {
                       fontStyle: FontStyle.italic,
                     ),
                   ),
-                  // UnorderedList(items: points),
                 ],
               ),
               Column(
@@ -586,6 +585,7 @@ class InternshipContent extends StatelessWidget {
               ),
             ],
           ),
+          UnorderedListInternship(items: points),
           Container(
             margin: EdgeInsets.only(
               top: 20,
@@ -599,6 +599,44 @@ class InternshipContent extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class UnorderedListInternship extends StatelessWidget {
+  final List<String> items;
+
+  UnorderedListInternship({required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: items.map((item) {
+        return Wrap(
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '', // Bullet character
+              style: TextStyle(
+                fontSize: 14,
+                fontStyle: FontStyle.italic,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              width: 4,
+            ),
+            Text(
+              item, // Display the point text here
+              style: TextStyle(
+                fontSize: 14,
+              ),
+            ),
+          ],
+        );
+      }).toList(),
     );
   }
 }
