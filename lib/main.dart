@@ -19,29 +19,7 @@ class ProfileApp extends StatelessWidget {
                 width: double.infinity, // Takes up the whole width
               ),
               SizedBox(height: 20),
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Container(
-                    height: 150,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(75),
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 5,
-                      ),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(70),
-                      child: Image.asset(
-                        'assets/profile_pic.png', // Replace with your image path
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              ProfilePictureWidget(),
               SizedBox(height: 20),
               Text(
                 'Anmol Baranwal',
@@ -57,74 +35,13 @@ class ProfileApp extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        '20+',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        'Projects',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Text(
-                    '|',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        '150+',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        'Followers (GitHub)', // we will separate it in multiline later using (""")
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Text(
-                    '|',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      Text(
-                        '40k+',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        'Views on Blogs',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
-                  ),
+              ColumnWithDivider(
+                items: [
+                  ColumnWithDividerItem(text: '20+', subtext: 'Projects'),
+                  ColumnWithDividerItem(
+                      text: '150+', subtext: 'Followers (GitHub)'),
+                  ColumnWithDividerItem(
+                      text: '40k+', subtext: 'Views on Blogs'),
                 ],
               ),
               SizedBox(height: 20),
@@ -138,6 +55,93 @@ class ProfileApp extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ProfilePictureWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Container(
+          height: 150,
+          width: 150,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(75),
+            border: Border.all(
+              color: Colors.white,
+              width: 5,
+            ),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(70),
+            child: Image.asset(
+              'assets/profile_pic.png', // Replace with your image path
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ColumnWithDividerItem {
+  final String text;
+  final String subtext;
+
+  ColumnWithDividerItem({
+    required this.text,
+    required this.subtext,
+  });
+}
+
+class ColumnWithDivider extends StatelessWidget {
+  final List<ColumnWithDividerItem> items;
+
+  ColumnWithDivider({required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> columnsWithDivider = [];
+    for (int i = 0; i < items.length; i++) {
+      columnsWithDivider.add(
+        Column(
+          children: [
+            Text(
+              items[i].text,
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              items[i].subtext,
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+          ],
+        ),
+      );
+      if (i < items.length - 1) {
+        columnsWithDivider.add(
+          Text(
+            '|',
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        );
+      }
+    }
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: columnsWithDivider,
     );
   }
 }
