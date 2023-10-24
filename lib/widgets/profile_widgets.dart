@@ -431,7 +431,7 @@ class ProjectDetails extends StatelessWidget {
             style: TextStyle(fontSize: 16),
           ),
           SizedBox(height: 6),
-          Row(
+          Wrap(
             children: [
               Text(
                 'Tech Stack: ',
@@ -468,13 +468,13 @@ class ProjectDetails extends StatelessWidget {
                 ),
               if (videoIcon != null && videoLink != null)
                 SocialIcon(
-                  icon: FontAwesomeIcons.video,
+                  icon: FontAwesomeIcons.play,
                   link: videoLink!,
                   size: 16,
                 ),
               if (documentIcon != null && documentLink != null)
                 SocialIcon(
-                  icon: FontAwesomeIcons.file,
+                  icon: FontAwesomeIcons.fileCode,
                   link: documentLink!,
                   size: 16,
                 ),

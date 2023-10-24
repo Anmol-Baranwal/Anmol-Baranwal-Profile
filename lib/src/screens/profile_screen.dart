@@ -470,8 +470,8 @@ class ProjectsContent extends StatelessWidget {
         ),
         ProjectDetails(
           title: '11. Awesome Illustrations',
-          description:
-              '50+ Upvotes on Product Hunt. I leveraged GitHub to meticulously curate a diverse collection of illustrations, Icons, and Mockups that showcase different styles. The collection is categorized into four distinct groups and currently features over 160 high-quality illustration sets. Each illustration set is accompanied by a preview image, name, category, available formats, and author information, providing all the necessary details in one place.',
+          description: '''50+ Upvotes on Product Hunt. 
+            I leveraged GitHub to meticulously curate a diverse collection of illustrations, Icons, and Mockups that showcase different styles. The collection is categorized into four distinct groups and currently features over 160 high-quality illustration sets. Each illustration set is accompanied by a preview image, name, category, available formats, and author information, providing all the necessary details in one place.''',
           techStack: [
             'Markdown',
           ],
