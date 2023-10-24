@@ -172,7 +172,7 @@ class EducationContent extends StatelessWidget {
           degree: '12th Class',
           institution: 'Green View Public School',
           location: 'Uttar Pradesh, India',
-          cgpa: '8.82',
+          cgpa: '88.2',
           type: 'percentage',
           date: '2017 - 2019',
         ),
@@ -308,6 +308,30 @@ class ProjectsContent extends StatelessWidget {
             ),
           ),
         ),
+        ProjectDetails(
+          title: 'Project 1 Title',
+          description: 'Description of Project 1...',
+          techStack: ['firebase', 'nextjs'],
+          githubIcon: true, // Display the GitHub icon
+          githubLink: Uri.parse('https://github.com/yourproject1'),
+          deploymentIcon: false, // Do not display the deployment icon
+          videoIcon: true, // Display the video icon
+          videoLink: Uri.parse('https://youtube.com/yourproject1video'),
+          documentIcon: true, // Display the document icon
+          documentLink: Uri.parse('https://example.com/project1document'),
+        ),
+        ProjectDetails(
+          title: 'Project 2 Title',
+          description: 'Description of Project 2...',
+          techStack: ['firebase', 'nextjs'],
+          githubIcon: true, // Display the GitHub icon
+          githubLink: Uri.parse('https://github.com/yourproject2'),
+          deploymentIcon: true, // Display the deployment icon
+          deploymentLink: Uri.parse('https://yourproject2.com'),
+          videoIcon: false, // Do not display the video icon
+          documentIcon: false, // Do not display the document icon
+        ),
+        // Add more ProjectDetails widgets for other projects
       ],
     );
   }

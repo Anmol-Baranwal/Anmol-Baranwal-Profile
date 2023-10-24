@@ -290,8 +290,10 @@ class SocialIcon extends StatelessWidget {
   final IconData icon;
   final Uri link;
   final String subtext;
+  final double? size; // Optional size parameter
 
-  SocialIcon({required this.icon, required this.link, required this.subtext});
+  SocialIcon(
+      {required this.icon, required this.link, this.subtext = '', this.size});
 
   _launchURL() async {
     if (await canLaunchUrl(link)) {
@@ -310,7 +312,7 @@ class SocialIcon extends StatelessWidget {
           IconButton(
             icon: FaIcon(icon), // Use IconButton with FaIcon
             onPressed: _launchURL, // Added onPressed to IconButton
-            iconSize: 22, // Icon Size
+            iconSize: size ?? 22, // Use provided size or a default value
             color: Colors.black, // Color Of Icon
           ),
           Text(subtext),
@@ -345,6 +347,121 @@ class ClickableText extends StatelessWidget {
           color: Colors.indigo,
           decoration: TextDecoration.underline, // Add underline
         ),
+      ),
+    );
+  }
+}
+
+class ProjectDetails extends StatelessWidget {
+  final String title;
+  final String description;
+  final List<String> techStack;
+  final bool? githubIcon;
+  final Uri? githubLink;
+  final bool? deploymentIcon;
+  final Uri? deploymentLink;
+  final bool? videoIcon;
+  final Uri? videoLink;
+  final bool? documentIcon;
+  final Uri? documentLink;
+
+  ProjectDetails({
+    required this.title,
+    required this.description,
+    required this.techStack,
+    this.githubIcon,
+    this.githubLink,
+    this.deploymentIcon,
+    this.deploymentLink,
+    this.videoIcon,
+    this.videoLink,
+    this.documentIcon,
+    this.documentLink,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20), // Add padding to the whole widget
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: EdgeInsets.only(bottom: 16),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w600,
+                color: Colors.indigo.shade600,
+                // decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
+          Text(
+            description,
+            style: TextStyle(fontSize: 16),
+          ),
+          SizedBox(height: 6),
+          Row(
+            children: [
+              Text(
+                'Tech Stack: ',
+                style: TextStyle(
+                  fontSize: 12,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black,
+                ),
+              ),
+              for (int i = 0; i < techStack.length; i++)
+                Text(
+                  techStack[i] + (i != techStack.length - 1 ? ', ' : ''),
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontStyle: FontStyle.italic,
+                    color: Colors.black,
+                  ),
+                ),
+            ],
+          ),
+          Row(
+            children: [
+              if (githubIcon != null && githubLink != null)
+                SocialIcon(
+                  icon: FontAwesomeIcons.github,
+                  link: githubLink!,
+                  size: 16,
+                ),
+              if (deploymentIcon != null && deploymentLink != null)
+                SocialIcon(
+                  icon: FontAwesomeIcons.laptopCode,
+                  link: deploymentLink!,
+                  size: 16,
+                ),
+              if (videoIcon != null && videoLink != null)
+                SocialIcon(
+                  icon: FontAwesomeIcons.video,
+                  link: videoLink!,
+                  size: 16,
+                ),
+              if (documentIcon != null && documentLink != null)
+                SocialIcon(
+                  icon: FontAwesomeIcons.file,
+                  link: documentLink!,
+                  size: 16,
+                ),
+            ],
+          ),
+          Container(
+            margin: EdgeInsets.only(
+                top: 20, bottom: 20), // Add a margin at the bottom
+            child: Container(
+              height: 2,
+              margin: EdgeInsets.only(left: 200, right: 200),
+              color: Colors.black26,
+            ),
+          ),
+        ],
       ),
     );
   }
