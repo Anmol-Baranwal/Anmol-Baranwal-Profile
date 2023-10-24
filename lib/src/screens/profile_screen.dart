@@ -319,6 +319,8 @@ class ProjectsContent extends StatelessWidget {
           videoLink: Uri.parse('https://youtube.com/yourproject1video'),
           documentIcon: true, // Display the document icon
           documentLink: Uri.parse('https://example.com/project1document'),
+          extraIcon: FontAwesomeIcons.star,
+          extraText: '200+ stars',
         ),
         ProjectDetails(
           title: 'Project 2 Title',

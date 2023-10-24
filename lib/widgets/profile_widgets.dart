@@ -288,16 +288,20 @@ class SocialMediaRow extends StatelessWidget {
 
 class SocialIcon extends StatelessWidget {
   final IconData icon;
-  final Uri link;
+  final Uri? link; // Make link optional by using Uri?
   final String subtext;
   final double? size; // Optional size parameter
 
-  SocialIcon(
-      {required this.icon, required this.link, this.subtext = '', this.size});
+  SocialIcon({
+    required this.icon,
+    this.link, // Use Uri? to make it optional
+    this.subtext = '',
+    this.size,
+  });
 
   _launchURL() async {
-    if (await canLaunchUrl(link)) {
-      await launchUrl(link);
+    if (link != null && await canLaunchUrl(link!)) {
+      await launchUrl(link!);
     } else {
       throw 'Could not launch $link';
     }
@@ -364,6 +368,8 @@ class ProjectDetails extends StatelessWidget {
   final Uri? videoLink;
   final bool? documentIcon;
   final Uri? documentLink;
+  final IconData? extraIcon;
+  final String? extraText;
 
   ProjectDetails({
     required this.title,
@@ -377,6 +383,8 @@ class ProjectDetails extends StatelessWidget {
     this.videoLink,
     this.documentIcon,
     this.documentLink,
+    this.extraIcon,
+    this.extraText,
   });
 
   @override
@@ -388,14 +396,34 @@ class ProjectDetails extends StatelessWidget {
         children: [
           Container(
             margin: EdgeInsets.only(bottom: 16),
-            child: Text(
-              title,
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
-                color: Colors.indigo.shade600,
-                // decoration: TextDecoration.underline,
-              ),
+            child: Row(
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.indigo.shade600,
+                  ),
+                ),
+                if (extraIcon != null && extraText != null)
+                  Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                            right: 6, left: 6), // Add margin for extraIcon
+                        child: Icon(extraIcon, size: 10),
+                      ),
+                      Text(
+                        extraText!,
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+              ],
             ),
           ),
           Text(
