@@ -84,7 +84,7 @@ class ProfileContent extends StatelessWidget {
           child: ProfilePictureWidget(),
         ),
         Container(
-          margin: EdgeInsets.only(top: 0), // Adjust the top margin as needed
+          margin: EdgeInsets.only(top: 0),
           child: Text(
             'Anmol Baranwal',
             style: TextStyle(
@@ -565,14 +565,64 @@ class InternshipsContent extends StatelessWidget {
           ),
         ),
         InternshipContent(
-          title: 'Company Name 2',
-          role: 'Intern',
+          title: 'Guidlify (Philippines)',
+          role: 'Frontend Developer',
           points: [
-            'Achievement 1',
-            'Achievement 2',
+            'I\'m also working with senior developers from France, Indonesia, and the Philippines. ',
+            'It\'s worth noting that I\'m the sole member from India in this diverse team. (7 Member Team)',
+            'We are working on connecting sponsors and tech community events.',
           ],
-          place: 'Location 2',
-          date: 'Date 2',
+          place: 'Remote',
+          date: 'Ongoing',
+        ),
+        InternshipContent(
+          title: 'GirlScript Summer of Code',
+          role: 'Mentor',
+          points: [
+            'I was thrilled to have served as a mentor for WebXDAO (Open Source Organization from Philippines) during GSSoC\'23, with Vincent as the Project Admin. ',
+            'During my tenure, I actively assisted other contributors and reviewed over 75 PRs',
+          ],
+          place: 'Remote',
+          date: 'June 2023 - Aug 2023',
+        ),
+        InternshipContent(
+          title: 'GirlScript Summer of Code',
+          role: 'Frontend Developer',
+          points: [
+            'Merged 100+ Pull Requests, enhancing LinksHub with features and raising it to 400+ Stars on GitHub. ',
+            'Secured the 11th rank at GSSoC\'23.',
+          ],
+          place: 'Remote',
+          date: 'May 2023 - Aug 2023',
+        ),
+        InternshipContent(
+          title: 'GirlScript Summer of Code',
+          role: 'Core Team',
+          points: [
+            'Integral member of Core Team, organizing engaging technical events and creating impactful content for two lakh+ audience on LinkedIn, Twitter, Instagram, and Discord.',
+          ],
+          place: 'Remote',
+          date: 'April 2023 - Aug 2023',
+        ),
+        InternshipContent(
+          title: 'NICMAR University',
+          role: 'Research Intern',
+          points: [
+            'Conducted extensive digital surveys & compiled a database of 10,000 schools and colleges in India, utilizing the essential data for comprehensive analysis.',
+            'I completed the quantitative analysis using the data collected over 1.5 months, utilizing advanced methods with a pivot table.',
+          ],
+          place: 'Maharashtra, India',
+          date: 'May 2022 - July 2022',
+        ),
+        InternshipContent(
+          title: 'Khajuribazar Co.,Ltd.',
+          role: 'UI/UX Designer',
+          points: [
+            'Designed the complete checkout flow, created 50+ nested components, and worked on 75+ artboards with complete responsive design from scratch using proper analytics.',
+            'Researched pain points to make the user experience smoother using Personas and User Journeys.',
+          ],
+          place: 'Remote',
+          date: 'Jan 2022 - April 2022',
         ),
       ],
     );
