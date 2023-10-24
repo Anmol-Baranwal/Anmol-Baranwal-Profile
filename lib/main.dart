@@ -37,7 +37,7 @@ class ProfileApp extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 2, bottom: 4),
+              margin: EdgeInsets.only(top: 2, bottom: 0),
               child: Text(
                 'Haryana, India',
                 style: TextStyle(
@@ -56,14 +56,24 @@ class ProfileApp extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Container(
-              margin: EdgeInsets.only(top: 20), // Adjust the margin as needed
+              margin: EdgeInsets.only(
+                  top: 20, bottom: 15), // Adjust the margin as needed
               child: Text(
                 'Crafting products with Open Source at heart',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                 ),
               ),
             ),
+            // here we need to add
+            SectionSeparator(),
+            ProfileRow(title: 'Born', subtext: 'DOB'),
+            ContactInfoRow(title1: 'Email', title2: 'Phone'),
+            AboutMeContainer(
+              title: 'About Me',
+              content: 'I am a passionate developer...',
+            ),
+            SocialMediaRow(),
           ],
         ),
       )),
@@ -147,7 +157,7 @@ class ColumnWithDivider extends StatelessWidget {
               '|',
               style: TextStyle(
                 fontSize: 24,
-                fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w200,
               ),
             ),
           ),
@@ -158,6 +168,147 @@ class ColumnWithDivider extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: columnsWithDivider,
+    );
+  }
+}
+
+class SectionSeparator extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 20), // Add a margin at the bottom
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey, // Shadow color
+            offset: Offset(0, 2), // Shadow offset
+            blurRadius: 4, // Shadow blur radius
+          ),
+        ],
+      ),
+      child: Container(
+        height: 2,
+        margin: EdgeInsets.only(left: 40, right: 40),
+        color: Colors.black,
+      ),
+    );
+  }
+}
+
+class ProfileRow extends StatelessWidget {
+  final String title;
+  final String subtext;
+
+  ProfileRow({required this.title, required this.subtext});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Expanded(
+          child: Text(
+            subtext,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ContactInfoRow extends StatelessWidget {
+  final String title1;
+  final String title2;
+
+  ContactInfoRow({required this.title1, required this.title2});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+              child: ProfileRow(title: title1, subtext: 'example@email.com')),
+          Expanded(child: ProfileRow(title: title2, subtext: '+123 456 7890')),
+        ],
+      ),
+    );
+  }
+}
+
+class AboutMeContainer extends StatelessWidget {
+  final String title;
+  final String content;
+
+  AboutMeContainer({required this.title, required this.content});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.centerLeft,
+      margin: EdgeInsets.only(left: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 8),
+          Text(
+            content,
+            style: TextStyle(fontSize: 14),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SocialMediaRow extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        SocialIcon(icon: Icons.link, link: 'linkedin.com'),
+        SocialIcon(icon: Icons.link, link: 'twitter.com'),
+        SocialIcon(icon: Icons.link, link: 'github.com'),
+        SocialIcon(icon: Icons.link, link: 'example.com'),
+      ],
+    );
+  }
+}
+
+class SocialIcon extends StatelessWidget {
+  final IconData icon;
+  final String link;
+
+  SocialIcon({required this.icon, required this.link});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Icon(
+          icon,
+          size: 36,
+          color: Colors.blue,
+        ),
+        Text(link),
+      ],
     );
   }
 }
