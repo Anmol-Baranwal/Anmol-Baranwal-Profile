@@ -173,8 +173,63 @@ class InternshipsContent extends StatelessWidget {
 class HobbiesContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Hobbies Content'),
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 16, bottom: 16),
+          child: Text(
+            'Hobbies',
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: Colors.indigo,
+              decoration: TextDecoration.underline,
+            ),
+          ),
+        ),
+        UnorderedList(items: [
+          'I love maintaining LinksHub - a project with 2000+ PRs and 450+ Stars',
+          'I often play chess on Lichess and have a global ranking of 1400+ in Rapid',
+          'I also manage several communities in discord and act as a mentor for beginners',
+          'I also explore things',
+          [
+            'I have done UI/UX Designing for 800+ hrs',
+            'Research internship',
+            'Launched design assets on gumroad',
+            'Made more than 30+ design mockups on Dribbble',
+            'Have 30+ projects on GitHub',
+            'Did mentoring',
+            'Won 7+ competitions',
+            'Have more than 150 followers on GitHub, being top 6% globally',
+            'Interact with dozens of people and collaborate with a few of them',
+            'Written content for 2 lakh+ audience and have 20k+ views on blogs',
+            'Contributed to more than 50 open-source projects and is part of several communities',
+          ],
+        ]),
+      ],
+    );
+  }
+}
+
+class UnorderedList extends StatelessWidget {
+  final List<dynamic> items;
+
+  UnorderedList({required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: items.map((item) {
+        return ListTile(
+          leading: Icon(
+            FontAwesomeIcons.circleDot,
+            size: 6,
+            color: Colors.indigo.shade600,
+          ),
+          title: item is String ? Text(item) : UnorderedList(items: item),
+        );
+      }).toList(),
     );
   }
 }
