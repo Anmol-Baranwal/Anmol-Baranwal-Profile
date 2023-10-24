@@ -67,11 +67,12 @@ class ProfileApp extends StatelessWidget {
             ),
             // here we need to add
             SectionSeparator(),
-            ProfileRow(title: 'Born', subtext: 'DOB'),
-            ContactInfoRow(title1: 'Email', title2: 'Phone'),
+            // ProfileRow(title: 'Born', subtext: 'DOB'),
+            // ContactInfoRow(title1: 'Email', title2: 'Phone'),
             AboutMeContainer(
               title: 'About Me',
-              content: 'I am a passionate developer...',
+              content:
+                  'Loving open source, I\'m a passionate full-stack developer in the top 8% on GitHub, actively contributing to communities and maintaining @LinksHub. With a rank of 11 in @GSSoC\'23, I also serve as a core team member and mentor. My technical writing has garnered over 40k+ views, and I recently completed Buildspace N&W S4, building something awesome.',
             ),
             SocialMediaRow(),
           ],
@@ -255,21 +256,33 @@ class AboutMeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(left: 16),
+      margin: EdgeInsets.only(top: 16, bottom: 36, left: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 14), // Adjust the padding as needed
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           SizedBox(height: 8),
-          Text(
-            content,
-            style: TextStyle(fontSize: 14),
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 14, right: 28, top: 8), // Adjust the padding as needed
+            child: Text(
+              content,
+              style: TextStyle(
+                fontSize: 14,
+                height: 1.5, // Adjust the line height as needed
+                letterSpacing: 0.5, // Adjust the letter spacing as needed
+              ),
+            ),
           ),
         ],
       ),
