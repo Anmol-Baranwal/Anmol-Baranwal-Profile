@@ -24,17 +24,25 @@ class ProfileApp extends StatelessWidget {
               offset: Offset(0, -75), // this is as per the banner
               child: ProfilePictureWidget(),
             ),
-            Text(
-              'Anmol Baranwal',
-              style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
+            Container(
+              margin:
+                  EdgeInsets.only(top: 0), // Adjust the top margin as needed
+              child: Text(
+                'Anmol Baranwal',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center, // Center-align the text
               ),
             ),
-            Text(
-              'Samalkha, Haryana',
-              style: TextStyle(
-                fontSize: 16,
+            Container(
+              margin: EdgeInsets.only(top: 2, bottom: 4),
+              child: Text(
+                'Haryana, India',
+                style: TextStyle(
+                  fontSize: 14,
+                ),
               ),
             ),
             SizedBox(height: 20),
@@ -43,14 +51,17 @@ class ProfileApp extends StatelessWidget {
                 ColumnWithDividerItem(text: '20+', subtext: 'Projects'),
                 ColumnWithDividerItem(
                     text: '150+', subtext: 'Followers (GitHub)'),
-                ColumnWithDividerItem(text: '40k+', subtext: 'Views on Blogs'),
+                ColumnWithDividerItem(text: '40k+', subtext: 'Blog Views'),
               ],
             ),
             SizedBox(height: 20),
-            Text(
-              'Additional text',
-              style: TextStyle(
-                fontSize: 18,
+            Container(
+              margin: EdgeInsets.only(top: 20), // Adjust the margin as needed
+              child: Text(
+                'Crafting products with Open Source at heart',
+                style: TextStyle(
+                  fontSize: 16,
+                ),
               ),
             ),
           ],
@@ -107,32 +118,37 @@ class ColumnWithDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> columnsWithDivider = [];
     for (int i = 0; i < items.length; i++) {
-      columnsWithDivider.add(
-        Column(
-          children: [
-            Text(
-              items[i].text,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+      columnsWithDivider.add(Column(
+        children: [
+          Text(
+            items[i].text,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
-            Text(
+          ),
+          Container(
+            margin: EdgeInsets.only(
+                top: 4), // Add margin to create a gap between text and subtext
+            child: Text(
               items[i].subtext,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 14,
               ),
             ),
-          ],
-        ),
-      );
+          ),
+        ],
+      ));
       if (i < items.length - 1) {
         columnsWithDivider.add(
-          Text(
-            '|',
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              '|',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w300,
+              ),
             ),
           ),
         );
@@ -140,7 +156,7 @@ class ColumnWithDivider extends StatelessWidget {
     }
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: columnsWithDivider,
     );
   }
