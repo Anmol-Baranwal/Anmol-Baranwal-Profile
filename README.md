@@ -1,8 +1,8 @@
 # My Flutter Portfolio App
 
-My Flutter portfolio app is a comprehensive showcase of my professional journey, highlighting various aspects of my career, skills, and interests. The app is structured into five main sections, each accessible through navigation:
+> ℹ️ You can access the apk file [here](https://drive.google.com/file/d/1x8GuZ-MUtD0DqpH5TDZx1bqRdE7nhsfN/view?usp=sharing).
 
-## Sections
+My Flutter portfolio app is a comprehensive showcase of my professional journey, highlighting various aspects of my career, skills, and interests. The app is structured into five main sections, each accessible through navigation:
 
 - **Profile**: Discover my professional profile, including an introduction and key details about me.
 -  **Projects**: Explore a curated selection of projects I've worked on, along with descriptions and links to the source code or live demos.
@@ -75,19 +75,33 @@ project/
 
 ## 💻 Glimpse of the Web Application
 
+> ℹ️ The icon links are working in the IDE and redirecting to the links associated with it.
+
+<br>
+
 > Profile Page
+
+![Screenshot 2023-10-25 033811](https://github.com/Anmol-Baranwal/Anmol-Baranwal-Profile/assets/74038190/b079eedb-0c7f-4df9-ac5e-41585df9388a)
+![Screenshot 2023-10-25 033845](https://github.com/Anmol-Baranwal/Anmol-Baranwal-Profile/assets/74038190/184071dc-cbb4-44cd-94d5-3eb8063c041b)
 
 > Education Page
 
+![Screenshot 2023-10-25 033908](https://github.com/Anmol-Baranwal/Anmol-Baranwal-Profile/assets/74038190/b3c1f57d-33c8-4216-ae56-e060686f7648)
+
 > Projects Page
+
+![Screenshot 2023-10-25 033931](https://github.com/Anmol-Baranwal/Anmol-Baranwal-Profile/assets/74038190/1b9a16b4-00f6-4dd3-a471-423a109798c0)
 
 > Internships Page
 
+![Screenshot 2023-10-25 033949](https://github.com/Anmol-Baranwal/Anmol-Baranwal-Profile/assets/74038190/11940e1f-47d2-40b4-9e1c-dcc22eb2a15e)
+
 > Hobbies Page
+
+![Screenshot 2023-10-25 034007](https://github.com/Anmol-Baranwal/Anmol-Baranwal-Profile/assets/74038190/1b61ce8c-38b8-4adf-a44d-f24c7514e0c0)
 
 
 <hr>
-
 
 ## Getting Started
 
