@@ -1,6 +1,6 @@
 # My Flutter Portfolio App
 
-> ℹ️ You can access the apk file [here](https://drive.google.com/file/d/1x8GuZ-MUtD0DqpH5TDZx1bqRdE7nhsfN/view?usp=sharing).
+> ℹ️ You can access the apk file [here](https://drive.google.com/file/d/1x8GuZ-MUtD0DqpH5TDZx1bqRdE7nhsfN/view?usp=sharing). You can also watch the preview of the app [here](https://drive.google.com/file/d/1NyNA-NNLyuwVg8P29E8G6CvLx4RwflNt/view?usp=sharing).
 
 My Flutter portfolio app is a comprehensive showcase of my professional journey, highlighting various aspects of my career, skills, and interests. The app is structured into five main sections, each accessible through navigation:
 
