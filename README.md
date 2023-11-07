@@ -60,10 +60,13 @@ project/
 |   |-- src/
 |   |   |-- screens/
 |   |   |   |-- profile_screen.dart
-|   |   |   |-- ...
+|   |   |   |-- profile_content_screen.dart
+|   |   |   |-- education_screen.dart
+|   |   |   |-- projects_screen.dart
+|   |   |   |-- internships_screen.dart
+|   |   |   |-- hobbies_screen.dart
 |   |-- widgets/
 |   |   |-- profile_widgets.dart
-|   |   |-- ...
 |-- assets/
 |   |-- ...
 |-- pubspec.yaml
