@@ -74,42 +74,44 @@ class EducationList extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    degree,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w200,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    institution,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(height: 4),
-                  if (program.isNotEmpty)
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     Text(
-                      program,
+                      degree,
                       style: TextStyle(
                         fontSize: 14,
+                        fontWeight: FontWeight.w200,
+                        fontStyle: FontStyle.italic,
                       ),
                     ),
-                  SizedBox(height: 2),
-                  if (type.isNotEmpty)
+                    SizedBox(height: 8),
                     Text(
-                      '$type:$cgpa',
+                      institution,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                ],
+                    SizedBox(height: 4),
+                    if (program.isNotEmpty)
+                      Text(
+                        program,
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                    SizedBox(height: 2),
+                    if (type.isNotEmpty)
+                      Text(
+                        '$type:$cgpa',
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                      ),
+                  ],
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -118,11 +120,11 @@ class EducationList extends StatelessWidget {
                   Text(
                     location,
                     style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.indigo.shade600,
-                        fontStyle: FontStyle.italic),
+                      fontSize: 16,
+                      color: Colors.indigo.shade600,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
-                  SizedBox(height: 4),
                   Text(
                     date,
                     style: TextStyle(
